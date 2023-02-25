@@ -7,10 +7,8 @@ pipeline {
                 git 'https://github.com/abdelkhalek97/Final-Task-Application.git'
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                 sh """
-                ls
-                pwd
                 docker login -u ${USERNAME} -p ${PASSWORD}
-                docker build -f Dockerfile -t abdelkhalek97/app:v1 .
+                docker build -f Dockerfile --network host -t abdelkhalek97/app:v1 .
                 docker push abdelkhalek97/app:v1
                 """
             
