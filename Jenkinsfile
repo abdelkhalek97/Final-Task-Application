@@ -27,6 +27,7 @@ pipeline {
                 kubectl apply -f redis-service.yml
                 kubectl apply -f app-deployment.yml
                 kubectl apply -f lb.yml
+                kubectl get svc
                 """
                      }
             }
